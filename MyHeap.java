@@ -1,22 +1,17 @@
 import java.util.*;
 public class MyHeap{
   private static void pushDown(int[] data, int size, int idx){
-    //System.out.println("pushing down " + data[idx] + " at index " + idx);
-    //System.out.println(HeapPrinter.toString(data, size- 1));
     int c1 = idx * 2 + 1;
     int c2 = idx * 2 + 2;
     if (c1 >= size) return;
     int larger = (c2 < size && data[c2] > data[c1]) ? c2 : c1;
     if (data[larger] > data[idx]){
-      //System.out.println("child " + larger + " is larger");
       swap(data, larger, idx);
       pushDown(data, size, larger);
     }
   }
 
   private static void pushUp(int[] data, int size, int idx){
-    //System.out.println("pushing up " + data[idx] + " at index " + idx);
-    //System.out.println(HeapPrinter.toString(data, size - 1));
     int p = (idx % 2 == 0) ? idx / 2 - 1 : idx / 2;
     if (idx == 0) return;
     if (data[p] < data[idx]){
@@ -42,7 +37,6 @@ public class MyHeap{
   }
 
   private static void swap(int[] data, int idx1,int idx2){
-    //System.out.println("swapping " + data[idx1] + " with " + data[idx2]);
     int temp = data[idx1];
     data[idx1] = data[idx2];
     data[idx2] = temp;
